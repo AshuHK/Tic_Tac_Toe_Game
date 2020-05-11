@@ -6,7 +6,7 @@ import random
 
 def draw_board(pos_list):
     """
-    Draws the board in the game space 
+    Draws the board in the game space
     """
 
     # clears out the canvas to make an empty board
@@ -20,10 +20,11 @@ def draw_board(pos_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    for x in range(len(pos_list)): 
-        for y in range(len(pos_list[0])): 
-            print(pos_list[x][y])
-        print()
+    for x in range(len(pos_list))     :
+        for y in range(len(pos_list[0])):
+            # print(pos_list[x][y])
+            # here you can draw the "x" or "o"
+
 
 
 def start_game():
@@ -33,10 +34,10 @@ def start_game():
     # will also choose how the game will be played based on the opponent choice
     # print(opponent_choice.get())
 
-    # this list will represent the choices of the user/computer 
-    pos_list = [[0, 0, 0], 
-                [0, 0, 0], 
-                [0, 0, 0]]
+    # this list will represent the choices of the user/computer
+    pos_list = [[1, 0, 0],
+                [0, 1, 0],
+                [0, 0, 1]]
 
     draw_board(pos_list)
     pass
