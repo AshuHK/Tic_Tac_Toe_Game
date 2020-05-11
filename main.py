@@ -4,6 +4,23 @@ from tkinter import ttk
 import random
 
 
+def motion(event):
+    """
+    Prints the position of the cursor relative the the upper left corner of 
+    the game space 
+
+    :param event: Event to be tracked (in this case, motion of the cursor)
+    """
+
+    x = canvas.winfo_pointerx()
+    y = canvas.winfo_pointery()
+
+    root_x = canvas.winfo_rootx()
+    root_y = canvas.winfo_rooty()
+
+    print("{}, {}".format(x - root_x, y - root_y))
+
+
 def draw_board(pos_list):
     """
     Draws the board in the game space
@@ -75,5 +92,6 @@ opponent_menu.grid(row=1, column=0, padx=5, pady=5)
 # set the default to the human opponent
 opponent_menu.current(0)
 
+root.bind("<Motion>", motion)
 # run the main loop and start the application
 root.mainloop()
