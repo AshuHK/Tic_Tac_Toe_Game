@@ -47,25 +47,29 @@ def end_turn():
     """
     Starts the game or goes to the next move
     """
-    # will also choose how the game will be played based on the opponent choice
-    # print(opponent_choice.get())
 
     # this list will represent the choices of the user/computer
     board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
 
     try:
+
+        # pull the inputs
         row_input = int(row_entry.get())
         column_input = int(column_entry.get())
 
+        # only draw the board when both values are in a reasonble range
         if (
             (row_input >= 0 and row_input <= 2)
             and (column_input >= 0)
             and (column_input <= 2)
         ):
             draw_board(board_list)
+
+        # produces the following output if not
         else:
             print("one of your values is out of range")
 
+    # if a number is not both boxes
     except ValueError:
         print("There is an error. Please try again.")
 
@@ -106,16 +110,13 @@ opponent_menu.current(0)
 
 # Row input
 Label(ui_frame, text="Row:", bg="grey").grid(row=1, column=0, padx=5, pady=5)
-
 row_entry = Entry(ui_frame)
 row_entry.grid(row=1, column=1, padx=5, pady=5)
 
 # Column input
 Label(ui_frame, text="Column:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
-
 column_entry = Entry(ui_frame)
 column_entry.grid(row=2, column=1, padx=5, pady=5)
-
 
 # run the main loop and start the application
 root.mainloop()
