@@ -4,24 +4,21 @@ from tkinter import ttk
 import random
 
 
-def motion(event):
+def draw_x(board_list):
     """
-    Prints the position of the cursor relative the the upper left corner of 
-    the game space 
-
-    :param event: Event to be tracked (in this case, motion of the cursor)
+    Draws all of the X's in the list of the board
     """
-
-    x = canvas.winfo_pointerx()
-    y = canvas.winfo_pointery()
-
-    root_x = canvas.winfo_rootx()
-    root_y = canvas.winfo_rooty()
-
-    print("{}, {}".format(x - root_x, y - root_y))
+    pass
 
 
-def draw_board(pos_list):
+def draw_o(board_list):
+    """
+    Draws all of the O's in the list of the board
+    """
+    pass
+
+
+def draw_board(board_list):
     """
     Draws the board in the game space
     """
@@ -37,11 +34,13 @@ def draw_board(pos_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    for x in range(len(pos_list)):
-        for y in range(len(pos_list[0])):
-            # print(pos_list[x][y])
-            # here you can draw the "x" or "o"
-            pass
+    for x in range(len(board_list)):
+        for y in range(len(board_list[0])):
+
+            if board_list[x][y] == "x":
+                draw_x(board_list)
+            elif board_list[x][y] == "o":
+                draw_o(board_list)
 
 
 def start_game():
@@ -52,9 +51,9 @@ def start_game():
     # print(opponent_choice.get())
 
     # this list will represent the choices of the user/computer
-    pos_list = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
 
-    draw_board(pos_list)
+    draw_board(board_list)
     pass
 
 
@@ -92,6 +91,5 @@ opponent_menu.grid(row=1, column=0, padx=5, pady=5)
 # set the default to the human opponent
 opponent_menu.current(0)
 
-root.bind("<Motion>", motion)
 # run the main loop and start the application
 root.mainloop()
