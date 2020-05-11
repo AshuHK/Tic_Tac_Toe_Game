@@ -52,8 +52,17 @@ def end_turn():
 
     # this list will represent the choices of the user/computer
     board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
+    
+    row_input = row_entry.get() 
+    column_input = column_entry.get() 
 
-    draw_board(board_list)
+    try: 
+        # if meeets range conditions 
+            # draw_board() 
+    except ValueError: 
+        pass
+
+    # draw_board(board_list)
     pass
 
 
