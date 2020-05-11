@@ -3,12 +3,23 @@ from tkinter import ttk
 
 import random
 
+def draw_board(): 
+    """
+    Draws the board in the game space 
+    """
+
+    # clears out the canvas to make an empty board 
+    canvas.delete("all")
+    pass
 
 def start_game():
     """
     Starts the game
     """
     # will also choose how the game will be played based on the opponent choice
+    # print(opponent_choice.get())
+
+    draw_board() 
     pass
 
 
