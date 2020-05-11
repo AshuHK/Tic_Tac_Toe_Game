@@ -10,6 +10,15 @@ def draw_board():
 
     # clears out the canvas to make an empty board 
     canvas.delete("all")
+
+    # Horizontal Lines 
+    canvas.create_rectangle(600, 160, 0, 160, fill="black")
+    canvas.create_rectangle(600, 320, 0, 320, fill="black")
+
+    # Vertical Lines 
+    canvas.create_rectangle(160, 600, 160, 0, fill="black")
+    canvas.create_rectangle(320, 600, 320, 0, fill="black")
+
     pass
 
 def start_game():
