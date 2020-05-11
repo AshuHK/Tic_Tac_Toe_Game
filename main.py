@@ -69,14 +69,25 @@ def end_turn():
             and (column_input >= 0)
             and (column_input <= 2)
         ):
-            if (move_count % 2) == 0:
-                print("Player 1 move is: {}, {}".format(row_input, column_input))
-                board_list[row_input][column_input] = "x"
-            else:
-                print("Player 2 move is: {}, {}".format(row_input, column_input))
-                board_list[row_input][column_input] = "0"
+            # checks if the position was taken already
+            if board_list[row_input][column_input] != 0: 
+                raise ValueError("Position was taken already")
+            else: 
+
+                # player 1 has X's 
+                if (move_count % 2) == 0:
+                    print("\nPlayer 1 move is: {}, {}".format(row_input, column_input))
+                    board_list[row_input][column_input] = "x"
+                
+                # player 2 has O's 
+                else:
+                    print("\nPlayer 2 move is: {}, {}".format(row_input, column_input))
+                    board_list[row_input][column_input] = "o"
             
             move_count += 1 
+
+            print(board_list)
+
             draw_board(board_list)
 
         # produces the following output if not
