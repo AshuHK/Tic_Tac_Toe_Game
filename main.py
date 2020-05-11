@@ -20,11 +20,11 @@ def draw_board(pos_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    for x in range(len(pos_list))     :
+    for x in range(len(pos_list)):
         for y in range(len(pos_list[0])):
             # print(pos_list[x][y])
             # here you can draw the "x" or "o"
-
+            pass
 
 
 def start_game():
@@ -35,9 +35,7 @@ def start_game():
     # print(opponent_choice.get())
 
     # this list will represent the choices of the user/computer
-    pos_list = [[1, 0, 0],
-                [0, 1, 0],
-                [0, 0, 1]]
+    pos_list = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
     draw_board(pos_list)
     pass
