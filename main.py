@@ -3,23 +3,27 @@ from tkinter import ttk
 
 import random
 
-def draw_board(pos_list): 
+
+def draw_board(pos_list):
     """
     Draws the board in the game space 
     """
 
-    # clears out the canvas to make an empty board 
+    # clears out the canvas to make an empty board
     canvas.delete("all")
 
-    # Horizontal Lines 
+    # Horizontal Lines
     canvas.create_rectangle(600, 170, 0, 160, fill="black")
     canvas.create_rectangle(600, 330, 0, 320, fill="black")
 
-    # Vertical Lines 
+    # Vertical Lines
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    pass
+    for i in range(len(pos_list)): 
+        for j in range(len(pos_list[0])): 
+            print(pos_list[i][j])
+
 
 def start_game():
     """
@@ -28,7 +32,12 @@ def start_game():
     # will also choose how the game will be played based on the opponent choice
     # print(opponent_choice.get())
 
-    draw_board() 
+    # this list will represent the choices of the user/computer 
+    pos_list = [[0, 0, 0], 
+                [0, 0, 0], 
+                [0, 0, 0]]
+
+    draw_board()
     pass
 
 
@@ -66,5 +75,5 @@ opponent_menu.grid(row=1, column=0, padx=5, pady=5)
 # set the default to the human opponent
 opponent_menu.current(0)
 
-# run the main loop and start the application 
+# run the main loop and start the application
 root.mainloop()
