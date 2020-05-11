@@ -3,7 +3,7 @@ from tkinter import ttk
 
 import random
 
-def draw_board(): 
+def draw_board(pos_list): 
     """
     Draws the board in the game space 
     """
@@ -12,12 +12,12 @@ def draw_board():
     canvas.delete("all")
 
     # Horizontal Lines 
-    canvas.create_rectangle(600, 160, 0, 160, fill="black")
-    canvas.create_rectangle(600, 320, 0, 320, fill="black")
+    canvas.create_rectangle(600, 170, 0, 160, fill="black")
+    canvas.create_rectangle(600, 330, 0, 320, fill="black")
 
     # Vertical Lines 
-    canvas.create_rectangle(160, 600, 160, 0, fill="black")
-    canvas.create_rectangle(320, 600, 320, 0, fill="black")
+    canvas.create_rectangle(210, 480, 200, 0, fill="black")
+    canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
     pass
 
