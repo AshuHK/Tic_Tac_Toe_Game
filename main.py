@@ -73,8 +73,8 @@ canvas = Canvas(root, width=600, height=480, bg="white")
 canvas.grid(row=1, column=0, padx=10, pady=5)
 
 # makes the start button/ end turn button 
-Button(ui_frame, text="End Turn or Start Game", command=end_turn, bg="red").grid(
-    row=0, column=1, padx=5, pady=5
+Button(ui_frame, text="End Turn", command=end_turn, bg="red").grid(
+    row=2, column=3, padx=5, pady=5
 )
 
 # a label for the opponent choice
@@ -86,10 +86,23 @@ Label(ui_frame, text="Choose your opponent", padx=5, pady=5).grid(
 opponent_menu = ttk.Combobox(
     ui_frame, textvariable=opponent_choice, values=["Human", "Computer"]
 )
-opponent_menu.grid(row=1, column=0, padx=5, pady=5)
+opponent_menu.grid(row=0, column=1, padx=5, pady=5)
 
 # set the default to the human opponent
 opponent_menu.current(0)
+
+# Row input 
+Label(ui_frame, text="Row:", bg="grey").grid(row=1, column=0, padx=5, pady=5)
+
+row_entry = Entry(ui_frame)
+row_entry.grid(row=1, column=1, padx=5, pady=5)
+
+# Column input 
+Label(ui_frame, text="Column:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
+
+column_entry = Entry(ui_frame)
+column_entry.grid(row=2, column=1, padx=5, pady=5)
+
 
 # run the main loop and start the application
 root.mainloop()
