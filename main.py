@@ -20,9 +20,10 @@ def draw_board(pos_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    for i in range(len(pos_list)): 
-        for j in range(len(pos_list[0])): 
-            print(pos_list[i][j])
+    for x in range(len(pos_list)): 
+        for y in range(len(pos_list[0])): 
+            print(pos_list[x][y])
+        print()
 
 
 def start_game():
@@ -37,7 +38,7 @@ def start_game():
                 [0, 0, 0], 
                 [0, 0, 0]]
 
-    draw_board()
+    draw_board(pos_list)
     pass
 
 
