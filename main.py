@@ -3,6 +3,9 @@ from tkinter import ttk
 
 import random
 
+board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+move_count = 0
+
 
 def draw_x(board_list):
     """
@@ -48,8 +51,11 @@ def end_turn():
     Starts the game or goes to the next move
     """
 
+    global board_list
+    global move_count
+
     # this list will represent the choices of the user/computer
-    board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
+    # board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
 
     try:
 
@@ -63,6 +69,14 @@ def end_turn():
             and (column_input >= 0)
             and (column_input <= 2)
         ):
+            if (move_count % 2) == 0:
+                print("Player 1 move is: {}, {}".format(row_input, column_input))
+                board_list[row_input][column_input] = "x"
+            else:
+                print("Player 2 move is: {}, {}".format(row_input, column_input))
+                board_list[row_input][column_input] = "0"
+            
+            move_count += 1 
             draw_board(board_list)
 
         # produces the following output if not
