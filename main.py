@@ -43,9 +43,9 @@ def draw_board(board_list):
                 draw_o(board_list)
 
 
-def start_game():
+def end_turn():
     """
-    Starts the game
+    Starts the game or goes to the next move 
     """
     # will also choose how the game will be played based on the opponent choice
     # print(opponent_choice.get())
@@ -72,8 +72,8 @@ ui_frame.grid(row=0, column=0, padx=10, pady=5)
 canvas = Canvas(root, width=600, height=480, bg="white")
 canvas.grid(row=1, column=0, padx=10, pady=5)
 
-# makes the start button
-Button(ui_frame, text="Start", command=start_game, bg="red").grid(
+# makes the start button/ end turn button 
+Button(ui_frame, text="End Turn or Start Game", command=end_turn, bg="red").grid(
     row=0, column=1, padx=5, pady=5
 )
 
