@@ -6,14 +6,16 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
-def motion(event): 
-    x = canvas.winfo_pointerx() 
-    y = canvas.winfo_pointery() 
+
+def motion(event):
+    x = canvas.winfo_pointerx()
+    y = canvas.winfo_pointery()
 
     root_x = canvas.winfo_rootx()
     root_y = canvas.winfo_rooty()
 
     print("{}, {}".format(x - root_x, y - root_y))
+
 
 def draw_x(row, column):
     """
@@ -26,21 +28,29 @@ def draw_o(row, column):
     """
     Drawa a single o on the board with a given row and column  
     """
+    # print(row, column)
+    if column != 1: 
+        column *= 2 
+        column -= 1 
+    
+    if row != 1: 
+        row *= 2 
+        row -= 1 
 
-    # x_center = 77 + ((1 + column) * 77)
-    # y_center = 100 + ((1 + row) * 100) 
+    y_center = (column * 77)
+    x_center = (row * 100)
 
-    # radius = 40 
+    radius = 40
 
-    # x0 = x_center - radius 
-    # y0 = y_center - radius
+    x0 = x_center - radius
+    y0 = y_center - radius
 
-    # x1 = x_center + radius
-    # y1 = y_center + radius
+    x1 = x_center + radius
+    y1 = y_center + radius
 
-    # canvas.create_oval(x0, y0, x1, y1, fill="red")
+    canvas.create_oval(x0, y0, x1, y1, fill="red")
 
-    return None 
+    return None
 
 
 def draw_board(board_list):
@@ -59,7 +69,7 @@ def draw_board(board_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    board_list = [["o", "o", "o"],["o", "o", "o"],["o", "o", "o"]]
+    board_list = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]]
 
     for x in range(len(board_list)):
         for y in range(len(board_list[0])):
@@ -81,7 +91,6 @@ def end_turn():
     # this list will represent the choices of the user/computer
     # board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
 
-
     try:
 
         # pull the inputs
@@ -95,21 +104,21 @@ def end_turn():
             and (column_input <= 2)
         ):
             # checks if the position was taken already
-            if board_list[row_input][column_input] != 0: 
+            if board_list[row_input][column_input] != 0:
                 raise ValueError("Position was taken already")
-            else: 
+            else:
 
-                # player 1 has X's 
+                # player 1 has X's
                 if (move_count % 2) == 0:
                     print("\nPlayer 1 move is: {}, {}".format(row_input, column_input))
                     board_list[row_input][column_input] = "x"
-                
-                # player 2 has O's 
+
+                # player 2 has O's
                 else:
                     print("\nPlayer 2 move is: {}, {}".format(row_input, column_input))
                     board_list[row_input][column_input] = "o"
-            
-            move_count += 1 
+
+            move_count += 1
 
             # print(board_list)
 
@@ -168,7 +177,7 @@ Label(ui_frame, text="Column:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
 column_entry = Entry(ui_frame)
 column_entry.grid(row=2, column=1, padx=5, pady=5)
 
-# keeps track of the cursor on the screen 
+# keeps track of the cursor on the screen
 root.bind("<Motion>", motion)
 
 # run the main loop and start the application
