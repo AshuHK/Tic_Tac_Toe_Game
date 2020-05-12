@@ -19,16 +19,20 @@ def motion(event):
 
 def draw_x(row, column):
     """
-    Draws a single x on the board with a given row and column
+    Draws a single "x" on the board with a given row and column
     """
     pass
 
 
 def draw_o(row, column):
     """
-    Drawa a single o on the board with a given row and column
+    Drawa a single "o" on the board with a given row and column
+
+    :param row: Integer for the row of the board that the "o" will be at
+    :param column: Integer for the column of the board the the "o" will be at
     """
-    # print(row, column)
+
+    # adjusting the column and rows to fit the grid
     if column != 1:
         column *= 2
         column -= 1
@@ -37,11 +41,13 @@ def draw_o(row, column):
         row *= 2
         row -= 1
 
+    # calculating the center position of the circle
     y_center = column * 77
     x_center = row * 100
 
     radius = 40
 
+    # create the base circle (the red part)
     x0 = x_center - radius
     y0 = y_center - radius
 
@@ -50,6 +56,7 @@ def draw_o(row, column):
 
     canvas.create_oval(x0, y0, x1, y1, fill="red")
 
+    # create the inner circle (the hole)
     x2 = x_center - (radius // 2)
     y2 = y_center - (radius // 2)
 
