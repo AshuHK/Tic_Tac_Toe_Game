@@ -126,9 +126,9 @@ def draw_board(board_list):
         for column in range(len(board_list[0])):
 
             if board_list[row][column] == "x":
-                draw_x(row, column)
+                draw_x(row + 1, column + 1)
             elif board_list[row][column] == "o":
-                draw_o(row, column)
+                draw_o(row + 1, column + 1)
 
 
 def end_turn():
@@ -139,20 +139,17 @@ def end_turn():
     global board_list
     global move_count
 
-    # this list will represent the choices of the user/computer
-    # board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
-
     try:
 
         # pull the inputs
-        row_input = int(row_entry.get()) + 1 
-        column_input = int(column_entry.get()) + 1 
+        row_input = int(row_entry.get())
+        column_input = int(column_entry.get())
 
         # only draw the board when both values are in a reasonble range
         if (
-            (row_input >= 1 and row_input <= 3)
-            and (column_input >= 1)
-            and (column_input <= 3)
+            (row_input >= 0 and row_input <= 2)
+            and (column_input >= 0)
+            and (column_input <= 2)
         ):
             # checks if the position was taken already
             if board_list[row_input][column_input] != 0:
