@@ -6,17 +6,25 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
+def motion(event): 
+    x = canvas.winfo.pointerx() 
+    y = canvas.winfo_pointery() 
 
-def draw_x(board_list):
+    root_x = canvas.winfo_rootx()
+    root_y = canvas.winfo_rooty()
+
+    print("{}, {}".format(x - root_x, y - root_y))
+
+def draw_x(row, column):
     """
-    Draws all of the X's in the list of the board
+    Draws a single x on the board with a given row and column 
     """
     pass
 
 
-def draw_o(board_list):
+def draw_o(row, column):
     """
-    Draws all of the O's in the list of the board
+    Drawa a single o on the board with a given row and column  
     """
     pass
 
@@ -41,9 +49,9 @@ def draw_board(board_list):
         for y in range(len(board_list[0])):
 
             if board_list[x][y] == "x":
-                draw_x(board_list)
+                draw_x(x, y)
             elif board_list[x][y] == "o":
-                draw_o(board_list)
+                draw_o(x, y)
 
 
 def end_turn():
@@ -142,6 +150,9 @@ row_entry.grid(row=1, column=1, padx=5, pady=5)
 Label(ui_frame, text="Column:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
 column_entry = Entry(ui_frame)
 column_entry.grid(row=2, column=1, padx=5, pady=5)
+
+# keeps track of the cursor on the screen 
+root.bind("<Motion>", motion)
 
 # run the main loop and start the application
 root.mainloop()
