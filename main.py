@@ -84,7 +84,8 @@ def draw_board(board_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    board_list = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]]
+    # board_list = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]]
+    board_list = [["x", "x", "x"], ["x", "x", "x"], ["x", "x", "x"]]
 
     for x in range(len(board_list)):
         for y in range(len(board_list[0])):
@@ -183,12 +184,12 @@ opponent_menu.grid(row=0, column=1, padx=5, pady=5)
 opponent_menu.current(0)
 
 # Row input
-Label(ui_frame, text="Row:", bg="grey").grid(row=1, column=0, padx=5, pady=5)
+Label(ui_frame, text="Column:", bg="grey").grid(row=1, column=0, padx=5, pady=5)
 row_entry = Entry(ui_frame)
 row_entry.grid(row=1, column=1, padx=5, pady=5)
 
 # Column input
-Label(ui_frame, text="Column:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
+Label(ui_frame, text="Row:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
 column_entry = Entry(ui_frame)
 column_entry.grid(row=2, column=1, padx=5, pady=5)
 
