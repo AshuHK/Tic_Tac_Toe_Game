@@ -26,18 +26,19 @@ def draw_o(row, column):
     """
     Drawa a single o on the board with a given row and column  
     """
-    x_center = 77 + ((2 * column) * 77)
-    y_center = 100 + ((2 * row) * 100)
 
-    radius = 20 
+    # x_center = 77 + ((1 + column) * 77)
+    # y_center = 100 + ((1 + row) * 100) 
 
-    x0 = x_center - radius 
-    y0 = y_center - radius
+    # radius = 40 
 
-    x1 = x_center + radius
-    y1 = y_center + radius
+    # x0 = x_center - radius 
+    # y0 = y_center - radius
 
-    canvas.create_oval(x0, y0, x1, y1, fill="red")
+    # x1 = x_center + radius
+    # y1 = y_center + radius
+
+    # canvas.create_oval(x0, y0, x1, y1, fill="red")
 
     return None 
 
@@ -64,9 +65,9 @@ def draw_board(board_list):
         for y in range(len(board_list[0])):
 
             if board_list[x][y] == "x":
-                draw_x(x, y)
+                draw_x(x + 1, y + 1)
             elif board_list[x][y] == "o":
-                draw_o(x, y)
+                draw_o(x + 1, y + 1)
 
 
 def end_turn():
