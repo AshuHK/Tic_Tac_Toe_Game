@@ -26,7 +26,20 @@ def draw_o(row, column):
     """
     Drawa a single o on the board with a given row and column  
     """
-    pass
+    x_center = 77 + ((2 * column) * 77)
+    y_center = 100 + ((2 * row) * 100)
+
+    radius = 20 
+
+    x0 = x_center - radius 
+    y0 = y_center - radius
+
+    x1 = x_center + radius
+    y1 = y_center + radius
+
+    canvas.create_oval(x0, y0, x1, y1, fill="red")
+
+    return None 
 
 
 def draw_board(board_list):
@@ -44,6 +57,8 @@ def draw_board(board_list):
     # Vertical Lines
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
+
+    board_list = [["o", "o", "o"],["o", "o", "o"],["o", "o", "o"]]
 
     for x in range(len(board_list)):
         for y in range(len(board_list[0])):
@@ -64,6 +79,7 @@ def end_turn():
 
     # this list will represent the choices of the user/computer
     # board_list = [["x", 0, 0], [0, "x", 0], [0, 0, "x"]]
+
 
     try:
 
@@ -94,7 +110,7 @@ def end_turn():
             
             move_count += 1 
 
-            print(board_list)
+            # print(board_list)
 
             draw_board(board_list)
 
