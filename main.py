@@ -21,6 +21,19 @@ def draw_x(row, column):
     """
     Draws a single "x" on the board with a given row and column
     """
+
+    # adjusting the column and rows to fit the grid 
+    if column != 1: 
+        column *= 2 
+        column -= 1 
+
+    if row != 1: 
+        row *= 2 
+        row -=1 
+
+    x_center = row * 100 
+    y_center = column * 77
+    
     pass
 
 
@@ -42,8 +55,8 @@ def draw_o(row, column):
         row -= 1
 
     # calculating the center position of the circle
-    y_center = column * 77
     x_center = row * 100
+    y_center = column * 77
 
     radius = 40
 
@@ -84,8 +97,8 @@ def draw_board(board_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
-    # board_list = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]]
-    board_list = [["x", "x", "x"], ["x", "x", "x"], ["x", "x", "x"]]
+    board_list = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]]
+    # board_list = [["x", "x", "x"], ["x", "x", "x"], ["x", "x", "x"]]
 
     for x in range(len(board_list)):
         for y in range(len(board_list[0])):
