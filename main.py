@@ -7,7 +7,7 @@ board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
 def motion(event): 
-    x = canvas.winfo.pointerx() 
+    x = canvas.winfo_pointerx() 
     y = canvas.winfo_pointery() 
 
     root_x = canvas.winfo_rootx()
