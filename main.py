@@ -7,16 +7,6 @@ board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
 
-# def motion(event):
-#     x = canvas.winfo_pointerx()
-#     y = canvas.winfo_pointery()
-
-#     root_x = canvas.winfo_rootx()
-#     root_y = canvas.winfo_rooty()
-
-#     print("{}, {}".format(x - root_x, y - root_y))
-
-
 def draw_x(row, column):
     """
     Draws a single "x" on the board with a given row and column
@@ -44,18 +34,9 @@ def draw_x(row, column):
     x1 = x_center + radius
     y1 = y_center + radius
 
-    canvas.create_oval(x0, y0, x1, y1, fill="blue")
+    # TODO: USE CANVAS.CREATE_POLYGON TO MAKE THE "X"'S
 
-    # create the inner circle (the hole)
-    x2 = x_center - (radius // 2)
-    y2 = y_center - (radius // 2)
-
-    x3 = x_center + (radius // 2)
-    y3 = y_center + (radius // 2)
-
-    canvas.create_oval(x2, y2, x3, y3, fill="white")
-    
-    pass
+    return None
 
 
 def draw_o(row, column):
@@ -120,7 +101,7 @@ def draw_board(board_list):
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
     # board_list = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]]
-    # board_list = [["x", "x", "x"], ["x", "x", "x"], ["x", "x", "x"]]
+    board_list = [["x", "x", "x"], ["x", "x", "x"], ["x", "x", "x"]]
 
     for row in range(len(board_list)):
         for column in range(len(board_list[0])):
@@ -224,9 +205,6 @@ row_entry.grid(row=1, column=1, padx=5, pady=5)
 Label(ui_frame, text="Row:", bg="grey").grid(row=2, column=0, padx=5, pady=5)
 column_entry = Entry(ui_frame)
 column_entry.grid(row=2, column=1, padx=5, pady=5)
-
-# keeps track of the cursor on the screen
-# root.bind("<Motion>", motion)
 
 # run the main loop and start the application
 root.mainloop()
