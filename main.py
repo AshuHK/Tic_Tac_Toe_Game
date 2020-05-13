@@ -6,6 +6,21 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
+def winner_popup(winner): 
+    pop_up = Tk() 
+    pop_up.maxsize(300,200)
+    pop_up.wm_title("The Winner is...")
+    label = Label(pop_up, text="{}!".format(winner).title())
+    
+    label.pack(side="top", fill="x", pady=10)
+
+    exit_button = Button(pop_up, text="Okay", command=pop_up.destroy)
+    exit_button.pack() 
+
+    pop_up.mainloop()
+
+
+
 def get_winner(row, column, board_list): 
     """
     Outputs the winner given the row and column of the winning position 
@@ -166,9 +181,12 @@ def draw_board(board_list):
         empty_count += board_list[i].count(0)
 
     if (winner is None) and (empty_count == 0): 
-        print("Draw")
-    else: 
-        print(winner)
+        # print("Draw")
+        winner = "Draw"
+        winner_popup(winner)
+    elif winner is not None: 
+        # print(winner)
+        winner_popup(winner)
 
 
 
