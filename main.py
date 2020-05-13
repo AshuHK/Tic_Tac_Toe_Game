@@ -9,6 +9,7 @@ move_count = 0
 def winner_popup(winner): 
     pop_up = Tk() 
     pop_up.maxsize(300,200)
+    pop_up.geometry("300x200")
     pop_up.wm_title("The Winner is...")
     label = Label(pop_up, text="{}!".format(winner).title())
     
@@ -259,20 +260,6 @@ canvas.grid(row=1, column=0, padx=10, pady=5)
 Button(ui_frame, text="End Turn", command=end_turn, bg="red").grid(
     row=2, column=3, padx=5, pady=5
 )
-
-# a label for the opponent choice
-Label(ui_frame, text="Choose your opponent", padx=5, pady=5).grid(
-    row=0, column=0, padx=5, pady=5
-)
-
-# create the choice for the opponent
-opponent_menu = ttk.Combobox(
-    ui_frame, textvariable=opponent_choice, values=["Human", "Computer"]
-)
-opponent_menu.grid(row=0, column=1, padx=5, pady=5)
-
-# set the default to the human opponent
-opponent_menu.current(0)
 
 # Row input
 Label(ui_frame, text="Column:", bg="grey").grid(row=1, column=0, padx=5, pady=5)
