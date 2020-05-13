@@ -14,14 +14,17 @@ def winner_popup(winner):
     :param winner: string of the winner of the game ("draw" if the game is
                     a draw)
     """
+    # create a new window
     pop_up = Tk()
     pop_up.maxsize(300, 100)
     pop_up.geometry("300x100")
+
+    # set the title and label for the winner
     pop_up.wm_title("The Winner is...")
     label = Label(pop_up, text="{}!".format(winner).title())
-
     label.pack(side="top", fill="x", pady=10)
 
+    # Make an exit button for the window
     exit_button = Button(pop_up, text="Okay", command=pop_up.destroy)
     exit_button.pack()
 
@@ -57,8 +60,7 @@ def check_win(board_list):
             if board_list[0][2] != 0:
                 return board_list[0][2]
 
-    else:
-        return None
+    return None
 
 
 def draw_x(row, column):
@@ -177,14 +179,17 @@ def draw_board(board_list):
 
     winner = check_win(board_list)
 
+    # count how many empty spaces are left on the board
     empty_count = 0
-
     for i in range(len(board_list)):
         empty_count += board_list[i].count(0)
 
+    # no spaces left and there is still no winner
     if (winner is None) and (empty_count == 0):
         winner = "Draw"
         winner_popup(winner)
+
+    # There is a winner
     elif winner is not None:
         winner_popup(winner)
 
@@ -216,12 +221,10 @@ def end_turn():
 
                 # player 1 has X's
                 if (move_count % 2) == 0:
-                    print("\nPlayer 1 move is: {}, {}".format(row_input, column_input))
                     board_list[row_input][column_input] = "x"
 
                 # player 2 has O's
                 else:
-                    print("\nPlayer 2 move is: {}, {}".format(row_input, column_input))
                     board_list[row_input][column_input] = "o"
 
             move_count += 1
@@ -237,6 +240,7 @@ def end_turn():
         print("There is an error. Please try again.")
 
 
+# make the base window
 root = Tk()
 root.title("Tic-Tac-Toe")
 root.maxsize(900, 600)
