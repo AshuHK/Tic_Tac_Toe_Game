@@ -8,8 +8,14 @@ move_count = 0
 
 
 def winner_popup(winner):
+    """
+    Creates a small popup window that prints the winner of the game 
+
+    :param winner: string of the winner of the game ("draw" if the game is 
+                    a draw)
+    """
     pop_up = Tk()
-    pop_up.maxsize(300, 200)
+    pop_up.maxsize(300, 100)
     pop_up.geometry("300x100")
     pop_up.wm_title("The Winner is...")
     label = Label(pop_up, text="{}!".format(winner).title())
