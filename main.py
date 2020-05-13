@@ -9,9 +9,9 @@ move_count = 0
 
 def winner_popup(winner):
     """
-    Creates a small popup window that prints the winner of the game 
+    Creates a small popup window that prints the winner into a popup window
 
-    :param winner: string of the winner of the game ("draw" if the game is 
+    :param winner: string of the winner of the game ("draw" if the game is
                     a draw)
     """
     pop_up = Tk()
@@ -188,8 +188,6 @@ def draw_board(board_list):
     elif winner is not None:
         winner_popup(winner)
 
-    print(winner)
-
 
 def end_turn():
     """
@@ -228,13 +226,11 @@ def end_turn():
 
             move_count += 1
 
-            # print(board_list)
-
             draw_board(board_list)
 
         # produces the following output if not
         else:
-            print("one of your values is out of range")
+            print("One(or both) of your values is out of range")
 
     # if a number is not both boxes
     except ValueError:
