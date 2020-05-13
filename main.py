@@ -6,6 +6,11 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
+def check_win(board_list): 
+    """
+    """
+
+    pass
 
 def draw_x(row, column):
     """
@@ -95,6 +100,7 @@ def draw_o(row, column):
 def draw_board(board_list):
     """
     Draws the board in the game space
+    :param board_list: 2D list of strings and ints of the board
     """
 
     # clears out the canvas to make an empty board
@@ -108,6 +114,7 @@ def draw_board(board_list):
     canvas.create_rectangle(210, 480, 200, 0, fill="black")
     canvas.create_rectangle(410, 480, 400, 0, fill="black")
 
+    # iterate through the board and draw each of the positions
     for row in range(len(board_list)):
         for column in range(len(board_list[0])):
 
@@ -115,6 +122,8 @@ def draw_board(board_list):
                 draw_x(row + 1, column + 1)
             elif board_list[row][column] == "o":
                 draw_o(row + 1, column + 1)
+    
+    check_win(board_list)
 
 
 def end_turn():
