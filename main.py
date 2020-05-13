@@ -6,17 +6,50 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
+def get_winner(row, column, board_list): 
+    """
+    Outputs the winner given the row and column of the winning position 
+
+    :param row: int for the row in the 2D list 
+    :param column: int for the column in the 2D list 
+    """
+    if board_list[row][column] == "x": 
+        return "x"
+    elif board_list[row][column] == "o": 
+        return "o"
+
 
 def check_win(board_list):
     """
+    Checks the given board and outputs the winner 
+
+    :param board_list: 2D list of strings and ints to represent the board
     """
 
-    pass
+    for i in range(0,3): 
+        if board_list[i][0] == board_list[i][1] == board_list[i][2]: 
+            if board_list[i][0] != 0: 
+                return get_winner(i, 0, board_list) 
+        elif board_list[0][i] == board_list[1][i] == board_list[2][i]: 
+            if board_list[0][i] != 0: 
+                return get_winner(0, 1, board_list) 
+        elif board_list[0][0] == board_list[1][1] == board_list[2][2]: 
+            if board_list[0][0] != 0: 
+                return get_winner(0,0, board_list)
+        elif board_list[0][2] == board_list[1][1] == board_list[2][0]: 
+            if board_list[0][2] != 0: 
+                return get_winner(0,2, board_list)
+
+    else: 
+        return None
 
 
 def draw_x(row, column):
     """
     Draws a single "x" on the board with a given row and column
+
+    :param row: Integer for the row of the board that the "x" will be at
+    :param column: Integer for the column of the board the the "x" will be at
     """
 
     # adjusting the column and rows to fit the grid
@@ -102,7 +135,7 @@ def draw_o(row, column):
 def draw_board(board_list):
     """
     Draws the board in the game space
-    :param board_list: 2D list of strings and ints of the board
+    :param board_list: 2D list of strings and ints to represent the board
     """
 
     # clears out the canvas to make an empty board
@@ -125,7 +158,18 @@ def draw_board(board_list):
             elif board_list[row][column] == "o":
                 draw_o(row + 1, column + 1)
 
-    check_win(board_list)
+    winner = check_win(board_list)
+    
+    empty_count = 0 
+
+    for i in range(len(board_list)): 
+        empty_count += board_list[i].count(0)
+
+    if (winner is None) and (empty_count == 0): 
+        print("Draw")
+    else: 
+        print(winner)
+
 
 
 def end_turn():
