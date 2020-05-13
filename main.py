@@ -139,8 +139,8 @@ def end_turn():
     try:
 
         # pull the inputs
-        row_input = int(row_entry.get())
-        column_input = int(column_entry.get())
+        row_input = int(row_entry.get()) - 1 
+        column_input = int(column_entry.get()) - 1 
 
         # only draw the board when both values are in a reasonble range
         if (
