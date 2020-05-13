@@ -21,6 +21,7 @@ def winner_popup(winner):
 
     pop_up.mainloop()
 
+
 def get_winner(row, column, board_list):
     """
     Outputs the winner given the row and column of the winning position 
