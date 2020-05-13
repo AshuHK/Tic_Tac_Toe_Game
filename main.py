@@ -22,19 +22,9 @@ def winner_popup(winner):
     pop_up.mainloop()
 
 
-def get_winner(row, column, board_list):
-    """
-    Outputs the winner given the row and column of the winning position 
-
-    :param row: int for the row in the 2D list 
-    :param column: int for the column in the 2D list 
-    """
-    return board_list[row][column]
-
-
 def check_win(board_list):
     """
-    Checks the given board and outputs the winner 
+    Checks the given board and outputs the winner
 
     :param board_list: 2D list of strings and ints to represent the board
     """
@@ -44,22 +34,22 @@ def check_win(board_list):
         # rows
         if board_list[i][0] == board_list[i][1] == board_list[i][2]:
             if board_list[i][0] != 0:
-                return get_winner(i, 0, board_list)
+                return board_list[i][0]
 
         # columns
         elif board_list[0][i] == board_list[1][i] == board_list[2][i]:
             if board_list[0][i] != 0:
-                return get_winner(0, i, board_list)
+                return board_list[0][i]
 
         # diagonal (top left to bottom right)
         elif board_list[0][0] == board_list[1][1] == board_list[2][2]:
             if board_list[0][0] != 0:
-                return get_winner(0, 0, board_list)
+                return board_list[0][0]
 
         # diagonal (bottom left to top right)
         elif board_list[0][2] == board_list[1][1] == board_list[2][0]:
             if board_list[0][2] != 0:
-                return get_winner(0, 2, board_list)
+                return board_list[0][2]
 
     else:
         return None
