@@ -85,7 +85,7 @@ def draw_o(row, column):
     x1 = x_center + radius
     y1 = y_center + radius
 
-    canvas.create_oval(x0, y0, x1, y1, fill="red")
+    canvas.create_oval(x0, y0, x1, y1, fill="red", outline="white")
 
     # create the inner circle (the hole)
     x2 = x_center - (radius // 1.05)
@@ -94,7 +94,7 @@ def draw_o(row, column):
     x3 = x_center + (radius // 1.05)
     y3 = y_center + (radius // 1.05)
 
-    canvas.create_oval(x2, y2, x3, y3, fill="white")
+    canvas.create_oval(x2, y2, x3, y3, fill="white", outline="white")
 
     return None
 
