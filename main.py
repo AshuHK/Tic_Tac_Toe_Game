@@ -9,7 +9,7 @@ move_count = 0
 def winner_popup(winner): 
     pop_up = Tk() 
     pop_up.maxsize(300,200)
-    pop_up.geometry("300x200")
+    pop_up.geometry("300x100")
     pop_up.wm_title("The Winner is...")
     label = Label(pop_up, text="{}!".format(winner).title())
     
@@ -182,12 +182,12 @@ def draw_board(board_list):
         empty_count += board_list[i].count(0)
 
     if (winner is None) and (empty_count == 0): 
-        # print("Draw")
         winner = "Draw"
         winner_popup(winner)
-    elif winner is not None: 
-        # print(winner)
+    elif (winner is not None): 
         winner_popup(winner)
+
+    print(winner)
 
 
 
