@@ -6,11 +6,13 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
-def check_win(board_list): 
+
+def check_win(board_list):
     """
     """
 
     pass
+
 
 def draw_x(row, column):
     """
@@ -32,7 +34,7 @@ def draw_x(row, column):
 
     radius = 40
 
-    # from top left to bottom right 
+    # from top left to bottom right
     x0 = x_center - radius
     y0 = y_center - radius
 
@@ -42,7 +44,7 @@ def draw_x(row, column):
     canvas.create_line(x0, y0, x1, y1, fill="blue")
 
     # from bottom left to top right
-    x2 = x_center + radius - 80 
+    x2 = x_center + radius - 80
     y2 = y_center + radius
 
     x3 = x_center - radius + 80
@@ -122,7 +124,7 @@ def draw_board(board_list):
                 draw_x(row + 1, column + 1)
             elif board_list[row][column] == "o":
                 draw_o(row + 1, column + 1)
-    
+
     check_win(board_list)
 
 
