@@ -6,32 +6,31 @@ import random
 board_list = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 move_count = 0
 
-def winner_popup(winner): 
-    pop_up = Tk() 
-    pop_up.maxsize(300,200)
+
+def winner_popup(winner):
+    pop_up = Tk()
+    pop_up.maxsize(300, 200)
     pop_up.geometry("300x100")
     pop_up.wm_title("The Winner is...")
     label = Label(pop_up, text="{}!".format(winner).title())
-    
+
     label.pack(side="top", fill="x", pady=10)
 
     exit_button = Button(pop_up, text="Okay", command=pop_up.destroy)
-    exit_button.pack() 
+    exit_button.pack()
 
     pop_up.mainloop()
 
-
-
-def get_winner(row, column, board_list): 
+def get_winner(row, column, board_list):
     """
     Outputs the winner given the row and column of the winning position 
 
     :param row: int for the row in the 2D list 
     :param column: int for the column in the 2D list 
     """
-    if board_list[row][column] == "x": 
+    if board_list[row][column] == "x":
         return "x"
-    elif board_list[row][column] == "o": 
+    elif board_list[row][column] == "o":
         return "o"
 
 
@@ -42,21 +41,29 @@ def check_win(board_list):
     :param board_list: 2D list of strings and ints to represent the board
     """
 
-    for i in range(0,3): 
-        if board_list[i][0] == board_list[i][1] == board_list[i][2]: 
-            if board_list[i][0] != 0: 
-                return get_winner(i, 0, board_list) 
-        elif board_list[0][i] == board_list[1][i] == board_list[2][i]: 
-            if board_list[0][i] != 0: 
-                return get_winner(0, 1, board_list) 
-        elif board_list[0][0] == board_list[1][1] == board_list[2][2]: 
-            if board_list[0][0] != 0: 
-                return get_winner(0,0, board_list)
-        elif board_list[0][2] == board_list[1][1] == board_list[2][0]: 
-            if board_list[0][2] != 0: 
-                return get_winner(0,2, board_list)
+    for i in range(0, 3):
 
-    else: 
+        # rows
+        if board_list[i][0] == board_list[i][1] == board_list[i][2]:
+            if board_list[i][0] != 0:
+                return get_winner(i, 0, board_list)
+
+        # columns
+        elif board_list[0][i] == board_list[1][i] == board_list[2][i]:
+            if board_list[0][i] != 0:
+                return get_winner(0, 1, board_list)
+
+        # diagonal (top left to bottom right)
+        elif board_list[0][0] == board_list[1][1] == board_list[2][2]:
+            if board_list[0][0] != 0:
+                return get_winner(0, 0, board_list)
+
+        # diagonal (bottom left to top right)
+        elif board_list[0][2] == board_list[1][1] == board_list[2][0]:
+            if board_list[0][2] != 0:
+                return get_winner(0, 2, board_list)
+
+    else:
         return None
 
 
@@ -175,20 +182,19 @@ def draw_board(board_list):
                 draw_o(row + 1, column + 1)
 
     winner = check_win(board_list)
-    
-    empty_count = 0 
 
-    for i in range(len(board_list)): 
+    empty_count = 0
+
+    for i in range(len(board_list)):
         empty_count += board_list[i].count(0)
 
-    if (winner is None) and (empty_count == 0): 
+    if (winner is None) and (empty_count == 0):
         winner = "Draw"
         winner_popup(winner)
-    elif (winner is not None): 
+    elif winner is not None:
         winner_popup(winner)
 
     print(winner)
-
 
 
 def end_turn():
@@ -202,8 +208,8 @@ def end_turn():
     try:
 
         # pull the inputs
-        row_input = int(row_entry.get()) - 1 
-        column_input = int(column_entry.get()) - 1 
+        row_input = int(row_entry.get()) - 1
+        column_input = int(column_entry.get()) - 1
 
         # only draw the board when both values are in a reasonble range
         if (
