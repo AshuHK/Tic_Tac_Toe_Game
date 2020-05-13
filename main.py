@@ -27,14 +27,23 @@ def draw_x(row, column):
 
     radius = 40
 
-    # create the base circle (the red part)
+    # from top left to bottom right 
     x0 = x_center - radius
     y0 = y_center - radius
 
     x1 = x_center + radius
     y1 = y_center + radius
 
-    # TODO: USE CANVAS.CREATE_POLYGON TO MAKE THE "X"'S
+    canvas.create_line(x0, y0, x1, y1, fill="blue")
+
+    # from bottom left to top right
+    x2 = x_center + radius - 80 
+    y2 = y_center + radius
+
+    x3 = x_center - radius + 80
+    y3 = y_center - radius
+
+    canvas.create_line(x2, y2, x3, y3, fill="red")
 
     return None
 
